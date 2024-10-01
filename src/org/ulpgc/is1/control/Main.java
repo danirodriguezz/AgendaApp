@@ -1,6 +1,7 @@
 package org.ulpgc.is1.control;
 
 import org.ulpgc.is1.model.Agenda;
+import org.ulpgc.is1.model.Contact;
 import org.ulpgc.is1.model.Group;
 import org.ulpgc.is1.model.Person;
 
@@ -27,8 +28,8 @@ public class Main {
         Group group1 = agenda.addGroup("trabajo");
         group1.addContact(person1);
         System.out.println(agenda.getContacts().size());
-        System.out.println(group1.getMembers().size());
-        group1.removeContact(person1);
+        System.out.println(group1.getMembers().get(0).getDate());
+        group1.removeContact(0);
         System.out.println(group1.getMembers().size());
     }
 }

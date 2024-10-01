@@ -1,19 +1,20 @@
 package org.ulpgc.is1.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Group {
     private final String name;
-    private List<Contact> members;
+    private ArrayList<Member> membersList;
 
-    public List<Contact> getMembers() {
-        return members;
+    public List<Member> getMembers() {
+        return membersList;
     }
 
     public Group(String name) {
         this.name = name;
-        members = new ArrayList<>();
+        membersList = new ArrayList<>();
     }
 
     public String getName() {
@@ -21,10 +22,11 @@ public class Group {
     }
 
     public void addContact(Contact contact) {
-        members.add(contact);
+        Member newMember = new Member(contact);
+        membersList.add(newMember);
     }
 
-    public void removeContact(Contact contact) {
-        members.remove(contact);
+    public void removeContact(int index) {
+        membersList.remove(index);
     }
 }
