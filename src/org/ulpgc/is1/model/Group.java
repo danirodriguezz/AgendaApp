@@ -7,10 +7,17 @@ public class Group {
     private final String name;
     private List<Contact> members;
 
+    public List<Contact> getMembers() {
+        return members;
+    }
 
     public Group(String name) {
         this.name = name;
         members = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addContact(Contact contact) {

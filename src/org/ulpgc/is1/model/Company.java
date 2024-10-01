@@ -14,4 +14,7 @@ public class Company extends Contact{
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
 }
