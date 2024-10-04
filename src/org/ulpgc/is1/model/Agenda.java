@@ -17,6 +17,13 @@ public class Agenda {
     }
 
     public Person addPerson(String firstName, String lastName, String email, String telephone, String address, int number, int floor, String city) {
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(firstName + " " + lastName)) {
+                System.out.println("The contact already exists in this agenda");
+                return null;
+            }
+        }
+
         // Create the new instance of Person
         Person newPerson = new Person(firstName, lastName, email, telephone, address, number, floor, city);
 
@@ -25,15 +32,28 @@ public class Agenda {
         return newPerson;
     }
 
-    public void addCompany(String name, String description, String email, String telephone, String address, int number, int floor, String city) {
+    public Company addCompany(String name, String description, String email, String telephone, String address, int number, int floor, String city) {
+        for (Contact contact: contacts) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                System.out.println("The contact already exists in this agenda");
+                return null;
+            }
+        }
         // Create the new instance of Person
         Company newCompany = new Company(name, description, email, telephone, address, number, floor, city);
 
         // Add the company to the list of contacts
         contacts.add(newCompany);
+        return newCompany;
     }
 
     public Group addGroup(String name) {
+        for (Group group : groups) {
+            if (group.getName().equalsIgnoreCase(name)) {
+                System.out.println("Error: The name of this group already exists in this agenda");
+                return null;
+            }
+        }
         // Create the new group
         Group newGroup = new Group(name);
 

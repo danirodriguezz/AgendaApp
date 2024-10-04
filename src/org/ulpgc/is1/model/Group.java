@@ -22,6 +22,12 @@ public class Group {
     }
 
     public void addContact(Contact contact) {
+        for (Member member : membersList) {
+            if (member.getContact().getName().equalsIgnoreCase(contact.getName())) {
+                System.out.println("Contact " + contact.getName() + " already exists in " + this.getName() + " Group");
+                return;
+            }
+        }
         Member newMember = new Member(contact);
         membersList.add(newMember);
     }

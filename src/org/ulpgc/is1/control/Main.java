@@ -1,7 +1,7 @@
 package org.ulpgc.is1.control;
 
 import org.ulpgc.is1.model.Agenda;
-import org.ulpgc.is1.model.Contact;
+import org.ulpgc.is1.model.Company;
 import org.ulpgc.is1.model.Group;
 import org.ulpgc.is1.model.Person;
 
@@ -25,11 +25,44 @@ public class Main {
                 3,
                 2,
                 "Las Palmas");
-        Group group1 = agenda.addGroup("trabajo");
+        Company company1 = agenda.addCompany(
+                "Company1",
+                "Description",
+                "company@company.com",
+                "123456789",
+                "Company Address",
+                2,
+                1,
+                "City of company"
+        );
+        //try to add the same person and contact to the agenda
+        Person person3 = agenda.addPerson("Luis",
+                "Alfonso Suarez",
+                "luis@correo.com",
+                "648537316",
+                "Triana",
+                3,
+                2,
+                "Las Palmas"); // The contact already exists in this agenda
+        Company company2 = agenda.addCompany(
+                "Company1",
+                "Description",
+                "company@company.com",
+                "123456789",
+                "Company Address",
+                2,
+                1,
+                "City of company"
+        ); // The contact already exists in this agenda
+        Group group1 = agenda.addGroup("Work");
+        Group group2 = agenda.addGroup("Work"); // Error: the name of this group already exist ...
         group1.addContact(person1);
-        System.out.println(agenda.getContacts().size());
-        System.out.println(group1.getMembers().get(0).getDate());
+        // Try add the same contact
+        group1.addContact(person1);
+        group1.addContact(person2);
+        System.out.println(agenda.getContacts().size()); // 3
+        System.out.println(group1.getMembers().getFirst().getDate());  // dd-MM-yyyy
         group1.removeContact(0);
-        System.out.println(group1.getMembers().size());
+        System.out.println(group1.getMembers().size()); // 1
     }
 }

@@ -1,6 +1,7 @@
 package org.ulpgc.is1.model;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Member {
     private Date date;
@@ -11,11 +12,12 @@ public class Member {
         this.contact = contact;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormatter.format(this.date);
     }
 
     public Contact getContact() {
-        return contact;
+        return this.contact;
     }
 }
